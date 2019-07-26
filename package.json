@@ -39,5 +39,12 @@
   },
   "devDependencies": {
     "@types/styled-components": "^4.1.18"
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": true,
+    "jsxBracketSameLine": true,
+    "parser": "typescript"
   }
 }
