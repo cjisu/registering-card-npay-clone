@@ -55,7 +55,7 @@ const useLinkedInput = (ref: any, initVal: string, maxLength: number, next?: any
 interface ILinkedInputProps {
   maxLength: number;
   type: string;
-  placeholder?: string;
+  inputWidth?: number;
   next?: any;
 }
 
@@ -66,12 +66,9 @@ const LinkedInput = forwardRef((props: ILinkedInputProps, ref: any) => {
     <CardRegisterInput
       ref={state.inputRef}
       type={props.type}
-      placeholder={
-        props.placeholder
-          ? props.placeholder
-          : Array.from({ length: props.maxLength }, () => Math.floor(Math.random() * 10)).join('')
-      }
+      placeholder={'0000'}
       value={state.value}
+      inputWidth={props.inputWidth}
       onChange={state.onChange}
     />
   );

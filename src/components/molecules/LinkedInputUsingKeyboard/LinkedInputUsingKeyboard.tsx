@@ -22,6 +22,7 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
 
   useImperativeHandle(ref, () => ({
     focus: () => {
+      handleFocus(true);
       inputRef.current.focus();
     },
     blur: () => {
@@ -97,6 +98,7 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
 interface ILinkedInputProps {
   maxLength: number;
   placeholder: string;
+  inputWidth?: number;
   next?: any;
 }
 
@@ -120,6 +122,7 @@ const LinkedInputUsingKeypad = forwardRef((props: ILinkedInputProps, ref: any) =
         ref={state.inputRef}
         placeholder={props.placeholder}
         value={state.value.replace(/[0-9]/g, '*')}
+        inputWidth={props.inputWidth}
         readOnly
       />
       {state.isFocus && (
