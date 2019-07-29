@@ -23,6 +23,11 @@ const KeypadHeader = styled.div`
 const KeyPad = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  >button: focus {
+    outline: none;
+    border: solid #4480d9;
+    border-width: 3px 0 0 3px;
+  }
 `;
 
 const KeyPadButton = styled.button`
@@ -58,12 +63,15 @@ const Button = styled.button`
 interface IVirtualKeyboardProps {
   handleKeyboardNumber(val: number): void;
   handleKeyboardNumberDelete(): void;
+  handleClose(): void;
 }
 
 const VirtualKeyboard: React.FC<IVirtualKeyboardProps> = props => {
   return (
     <Wrapper>
-      <KeypadHeader>닫기</KeypadHeader>
+      <KeypadHeader>
+        <div onClick={() => props.handleClose()}>닫기</div>
+      </KeypadHeader>
       <KeyPad>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1, -1].map(val => (
           <KeyPadButton key={'keypad' + val} onClick={() => props.handleKeyboardNumber(val)}>
