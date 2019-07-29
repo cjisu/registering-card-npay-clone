@@ -1,16 +1,13 @@
 {
   "files": {
-    "main.css": "/registering-card-npay-clone/static/css/main.19393e92.chunk.css",
-    "main.js": "/registering-card-npay-clone/static/js/main.7782bbf2.chunk.js",
-    "main.js.map": "/registering-card-npay-clone/static/js/main.7782bbf2.chunk.js.map",
+    "main.js": "/registering-card-npay-clone/static/js/main.f5416f61.chunk.js",
+    "main.js.map": "/registering-card-npay-clone/static/js/main.f5416f61.chunk.js.map",
     "runtime~main.js": "/registering-card-npay-clone/static/js/runtime~main.da45958b.js",
     "runtime~main.js.map": "/registering-card-npay-clone/static/js/runtime~main.da45958b.js.map",
-    "static/js/2.b41502e9.chunk.js": "/registering-card-npay-clone/static/js/2.b41502e9.chunk.js",
-    "static/js/2.b41502e9.chunk.js.map": "/registering-card-npay-clone/static/js/2.b41502e9.chunk.js.map",
+    "static/js/2.7db250a4.chunk.js": "/registering-card-npay-clone/static/js/2.7db250a4.chunk.js",
+    "static/js/2.7db250a4.chunk.js.map": "/registering-card-npay-clone/static/js/2.7db250a4.chunk.js.map",
     "index.html": "/registering-card-npay-clone/index.html",
-    "precache-manifest.06330ca77d0711d020ff09b3f94c356d.js": "/registering-card-npay-clone/precache-manifest.06330ca77d0711d020ff09b3f94c356d.js",
-    "service-worker.js": "/registering-card-npay-clone/service-worker.js",
-    "static/css/main.19393e92.chunk.css.map": "/registering-card-npay-clone/static/css/main.19393e92.chunk.css.map",
-    "static/media/logo.svg": "/registering-card-npay-clone/static/media/logo.5d5d9eef.svg"
+    "precache-manifest.90ae47f07d1a2d0e3d745e4e862296a6.js": "/registering-card-npay-clone/precache-manifest.90ae47f07d1a2d0e3d745e4e862296a6.js",
+    "service-worker.js": "/registering-card-npay-clone/service-worker.js"
   }
 }
