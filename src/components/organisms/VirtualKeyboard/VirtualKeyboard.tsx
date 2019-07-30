@@ -61,6 +61,7 @@ const Button = styled.button`
 `;
 
 interface IVirtualKeyboardProps {
+  title: string;
   handleKeyboardNumber(val: number): void;
   handleKeyboardNumberDelete(): void;
   handleClose(): void;
@@ -74,7 +75,7 @@ const VirtualKeyboard: React.FC<IVirtualKeyboardProps> = props => {
       </KeypadHeader>
       <KeyPad>
         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1, -1].map(val => (
-          <KeyPadButton key={'keypad' + val} onClick={() => props.handleKeyboardNumber(val)}>
+          <KeyPadButton key={props.title + val} onClick={() => props.handleKeyboardNumber(val)}>
             {val >= 0 && val}
           </KeyPadButton>
         ))}
