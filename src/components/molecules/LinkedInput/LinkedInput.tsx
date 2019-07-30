@@ -42,6 +42,12 @@ const useLinkedInput = (ref: any, initVal: string, maxLength: number, next?: any
           inputRef.current.focus();
         }
       }
+    },
+    offFocus: (onFocusRef: any) => {
+      if (onFocusRef.current !== inputRef.current) {
+        inputRef.current.blur();
+        next.current.offFocus(onFocusRef);
+      }
     }
   }));
 

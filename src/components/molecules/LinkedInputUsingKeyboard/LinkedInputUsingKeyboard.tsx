@@ -16,13 +16,24 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
   const [value, setValue] = useState('');
   const [isFocus, handleFocus] = useState(false);
 
+  const handleDocumentClickEvent = (e: any) => {
+    if (!keyboard || !keyboard.current) {
+      return;
+    }
+
+    if (keyboard && (keyboard.current.contains(e.target) || e.target === inputRef.current)) {
+      handleFocus(true);
+    } else {
+      handleFocus(false);
+    }
+  };
+
   const onChangeFocus = (val: boolean) => {
     handleFocus(val);
   };
 
   useImperativeHandle(ref, () => ({
     focus: () => {
-      handleFocus(true);
       inputRef.current.focus();
     },
     blur: () => {
@@ -36,6 +47,7 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
         setValue(value + val);
         if (value.length === maxLength - 1) {
           handleFocus(false);
+          next.current.getNext(inputRef);
         }
       }
     },
@@ -55,11 +67,15 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
           next.current.getNext(findStartItem);
         }
       } else {
-        if (value.length === maxLength) {
-          inputRef.current.blur();
-        } else {
-          inputRef.current.focus();
+        inputRef.current.focus();
+      }
+    },
+    offFocus: (onFocusRef: any) => {
+      if (onFocusRef.current !== inputRef.current) {
+        if (isFocus) {
+          handleFocus(false);
         }
+        next.current.offFocus(onFocusRef);
       }
     }
   }));
@@ -74,29 +90,17 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
         handleFocus(true);
       });
     }
-
-    document.addEventListener('click', e => {
-      if (!keyboard || !keyboard.current) {
-        return;
-      }
-
-      if (keyboard && (keyboard.current.contains(e.target) || e.target === inputRef.current)) {
-        handleFocus(true);
-      } else {
-        handleFocus(false);
-      }
-    });
-  });
-
-  if (value.length === maxLength && next) {
-    next.current.getNext(inputRef);
-  }
+    // if (isFocus) {
+    document.addEventListener('click', e => handleDocumentClickEvent(e));
+    // }
+  }, [inputRef]);
 
   return { inputRef, value, isFocus, keyboard, onChangeFocus };
 };
 
 interface ILinkedInputProps {
   maxLength: number;
+  title: string;
   placeholder: string;
   inputWidth?: number;
   next?: any;
@@ -128,6 +132,7 @@ const LinkedInputUsingKeypad = forwardRef((props: ILinkedInputProps, ref: any) =
       {state.isFocus && (
         <div ref={state.keyboard}>
           <VirtualKeyboard
+            title={props.title}
             handleKeyboardNumber={handleKeyboardNumber}
             handleKeyboardNumberDelete={handleKeyboardNumberDelete}
             handleClose={handleClose}
