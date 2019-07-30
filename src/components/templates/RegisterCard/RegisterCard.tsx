@@ -116,12 +116,20 @@ const RegisterCard: React.FC = () => {
             <CardDashDiv>
               <CardDash />
             </CardDashDiv>
-            <LinkedInputUsingKeyboard ref={third} placeholder="0000" maxLength={4} inputWidth={50} next={fourth} />
+            <LinkedInputUsingKeyboard
+              ref={third}
+              title="third-card-number"
+              placeholder="0000"
+              maxLength={4}
+              inputWidth={50}
+              next={fourth}
+            />
             <CardDashDiv>
               <CardDash />
             </CardDashDiv>
             <LinkedInputUsingKeyboard
               ref={fourth}
+              title="fourth-card-number"
               placeholder="0000"
               maxLength={4}
               inputWidth={50}
@@ -132,17 +140,30 @@ const RegisterCard: React.FC = () => {
         <CardInfo>
           <ExpirationPeriod>
             <Title>유효기간</Title>
-            <LinkedInputUsingKeyboard ref={expirationPeriod} placeholder="MMYY" maxLength={4} next={cvc} />
+            <LinkedInputUsingKeyboard
+              ref={expirationPeriod}
+              title="expiration-period-number"
+              placeholder="MMYY"
+              maxLength={4}
+              next={cvc}
+            />
           </ExpirationPeriod>
           <CVC>
             <Title>CVC</Title>
-            <LinkedInputUsingKeyboard ref={cvc} placeholder="카드 뒷면 3자리 숫자" maxLength={3} next={cardPassword} />
+            <LinkedInputUsingKeyboard
+              ref={cvc}
+              title="cvc-number"
+              placeholder="카드 뒷면 3자리 숫자"
+              maxLength={3}
+              next={cardPassword}
+            />
           </CVC>
         </CardInfo>
         <CardPassword>
           <Title>카드 비밀번호</Title>
           <LinkedInputUsingKeyboard
             ref={cardPassword}
+            title="card-password-number"
             placeholder="비밀번호 앞 2자리 숫자"
             maxLength={2}
             next={first}
