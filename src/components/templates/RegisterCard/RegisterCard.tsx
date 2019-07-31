@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 import LinkedInput from '../../molecules/LinkedInput';
 import LinkedInputUsingKeyboard from '../../molecules/LinkedInputUsingKeyboard';
+import imgKakaoBank from '../../../assets/images/kakao_bank.png';
 const Bank = styled.div`
   padding: 20px;
   font-size: 20px;
@@ -18,6 +19,7 @@ const RegisterCardWrapper = styled.div`
   border-left: 1px solid #e2e6e9;
   border-right: 1px solid #e2e6e9;
   background: #ffffff;
+  font-family: 'Noto Sans KR';
 `;
 
 const Title = styled.div`
@@ -92,6 +94,16 @@ const CardPassword = styled.div`
   height: 80px;
 `;
 
+const getKeyboardNumbers = () => {
+  const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1, -1];
+  for (let i = numbers.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [numbers[i], numbers[j]] = [numbers[j], numbers[i]];
+  }
+
+  return numbers;
+};
+
 const RegisterCard: React.FC = () => {
   const first = useRef<any>();
   const second = useRef<any>();
@@ -100,10 +112,12 @@ const RegisterCard: React.FC = () => {
   const expirationPeriod = useRef<any>();
   const cvc = useRef<any>();
   const cardPassword = useRef<any>();
-
+  const keyboardNumbers = getKeyboardNumbers();
   return (
     <>
-      <Bank>kakao bank</Bank>
+      <Bank>
+        <img src={imgKakaoBank} alt="" width="120" height="30" />
+      </Bank>
       <RegisterCardWrapper>
         <CardNumber>
           <Title>카드번호</Title>
@@ -119,6 +133,7 @@ const RegisterCard: React.FC = () => {
             <LinkedInputUsingKeyboard
               ref={third}
               title="third-card-number"
+              keyboardNumbers={keyboardNumbers}
               placeholder="0000"
               maxLength={4}
               inputWidth={50}
@@ -130,6 +145,7 @@ const RegisterCard: React.FC = () => {
             <LinkedInputUsingKeyboard
               ref={fourth}
               title="fourth-card-number"
+              keyboardNumbers={keyboardNumbers}
               placeholder="0000"
               maxLength={4}
               inputWidth={50}
@@ -143,6 +159,7 @@ const RegisterCard: React.FC = () => {
             <LinkedInputUsingKeyboard
               ref={expirationPeriod}
               title="expiration-period-number"
+              keyboardNumbers={keyboardNumbers}
               placeholder="MMYY"
               maxLength={4}
               next={cvc}
@@ -153,6 +170,7 @@ const RegisterCard: React.FC = () => {
             <LinkedInputUsingKeyboard
               ref={cvc}
               title="cvc-number"
+              keyboardNumbers={keyboardNumbers}
               placeholder="카드 뒷면 3자리 숫자"
               maxLength={3}
               next={cardPassword}
@@ -164,6 +182,7 @@ const RegisterCard: React.FC = () => {
           <LinkedInputUsingKeyboard
             ref={cardPassword}
             title="card-password-number"
+            keyboardNumbers={keyboardNumbers}
             placeholder="비밀번호 앞 2자리 숫자"
             maxLength={2}
             next={first}

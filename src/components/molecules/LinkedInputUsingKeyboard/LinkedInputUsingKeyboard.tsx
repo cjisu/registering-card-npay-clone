@@ -102,6 +102,7 @@ interface ILinkedInputProps {
   maxLength: number;
   title: string;
   placeholder: string;
+  keyboardNumbers: number[];
   inputWidth?: number;
   next?: any;
 }
@@ -133,6 +134,7 @@ const LinkedInputUsingKeypad = forwardRef((props: ILinkedInputProps, ref: any) =
         <div ref={state.keyboard}>
           <VirtualKeyboard
             title={props.title}
+            numbers={props.keyboardNumbers}
             handleKeyboardNumber={handleKeyboardNumber}
             handleKeyboardNumberDelete={handleKeyboardNumberDelete}
             handleClose={handleClose}

@@ -62,6 +62,7 @@ const Button = styled.button`
 
 interface IVirtualKeyboardProps {
   title: string;
+  numbers: number[];
   handleKeyboardNumber(val: number): void;
   handleKeyboardNumberDelete(): void;
   handleClose(): void;
@@ -74,13 +75,17 @@ const VirtualKeyboard: React.FC<IVirtualKeyboardProps> = props => {
         <div onClick={() => props.handleClose()}>닫기</div>
       </KeypadHeader>
       <KeyPad>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, -1, -1].map(val => (
-          <KeyPadButton key={props.title + val} onClick={() => props.handleKeyboardNumber(val)}>
+        {props.numbers.map(val => (
+          <KeyPadButton
+            key={props.title + val}
+            onClick={() => {
+              if (val !== -1) {
+                props.handleKeyboardNumber(val);
+              }
+            }}>
             {val >= 0 && val}
           </KeyPadButton>
         ))}
-        {/* <KeyPadButton onClick={() => props.handleKeyboardNumberDelete()}>
-        </KeyPadButton> */}
       </KeyPad>
       <KeypadFooter>
         <Button onClick={() => props.handleKeyboardNumberDelete()}>전체삭제</Button>
