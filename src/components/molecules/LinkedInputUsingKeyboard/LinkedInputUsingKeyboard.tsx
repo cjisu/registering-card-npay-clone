@@ -47,6 +47,7 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
         setValue(value + val);
         if (value.length === maxLength - 1) {
           handleFocus(false);
+          document.removeEventListener('click', handleDocumentClickEvent, true);
           next.current.getNext(inputRef);
         }
       }
@@ -84,16 +85,15 @@ const useLinkedInputUsingKeypad = (ref: any, initVal: string, maxLength: number,
     if (inputRef.current) {
       inputRef.current.addEventListener('click', () => {
         setValue('');
-        inputRef.current.focus();
+        handleFocus(true);
       });
       inputRef.current.addEventListener('focus', () => {
         handleFocus(true);
       });
     }
-    // if (isFocus) {
-    document.addEventListener('click', e => handleDocumentClickEvent(e));
-    // }
-  }, [inputRef]);
+
+    document.addEventListener('click', e => handleDocumentClickEvent(e), true);
+  }, [inputRef, isFocus]);
 
   return { inputRef, value, isFocus, keyboard, onChangeFocus };
 };
