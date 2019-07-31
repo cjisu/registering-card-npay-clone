@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "66b0f8ca98b6aa90b922f4fb15e9bbd2",
+    "revision": "182047ec8dbac0915ad69133a8dae168",
     "url": "/registering-card-npay-clone/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/registering-card-npay-clone/static/js/2.7db250a4.chunk.js"
   },
   {
-    "revision": "e934d753225976d62129",
-    "url": "/registering-card-npay-clone/static/js/main.f5416f61.chunk.js"
+    "revision": "ba75d54a8618325d7a8e",
+    "url": "/registering-card-npay-clone/static/js/main.dcea529f.chunk.js"
   },
   {
     "revision": "4f7ce8b38c9ee176a561",

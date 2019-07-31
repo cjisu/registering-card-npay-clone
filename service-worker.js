@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/registering-card-npay-clone/precache-manifest.90ae47f07d1a2d0e3d745e4e862296a6.js"
+  "/registering-card-npay-clone/precache-manifest.af4e0524631d6c05a5b9cfe551d1eb2f.js"
 );
 
 self.addEventListener('message', (event) => {
